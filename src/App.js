@@ -5,17 +5,22 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import { Container } from 'semantic-ui-react'
 import ButtonAppBar from './components/Menu';
+import { AuthProvider } from './context/auth';
 function App() {
   return (
-    <Router>
-        <ButtonAppBar/>
-      <Routes>
+    <AuthProvider>
+      <Router>
+        <ButtonAppBar />
+
+        <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-        
-      </Routes>
-    </Router>
+
+        </Routes>
+      </Router>
+    </AuthProvider>
+
   );
 }
 

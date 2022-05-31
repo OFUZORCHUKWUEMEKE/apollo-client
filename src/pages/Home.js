@@ -7,15 +7,15 @@ import { Box } from '@mui/system'
 
 
 const Home = () => {
-  const { loading, data: { getPosts: Post } } = useQuery(FETCH_POSTS_QUERY)
-  console.log(Post)
+  const { loading, data: { getPosts: posts } = {} } = useQuery(FETCH_POSTS_QUERY)
+  console.log(posts)
   return (
     <Box sx={{width:"80%",margin:"auto"}}>
       <Grid container spacing={2}>
         {loading ? (
           <h1>Loading Post</h1>
         ) : (
-          Post && Post.map(post => (
+          posts && posts.map(post => (
             <Card post={post} key={post.id} />
           ))
         )}
